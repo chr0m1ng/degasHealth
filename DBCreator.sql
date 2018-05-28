@@ -14,6 +14,6 @@ CREATE TABLE Medico (
   PRIMARY KEY (id)
 );
 
-SELECT * FROM Medico;
+-- SELECT * FROM Medico;
 
-drop TABLE Medico;
+-- drop TABLE Medico;
