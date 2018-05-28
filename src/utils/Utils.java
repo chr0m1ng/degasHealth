@@ -5,6 +5,12 @@
  */
 package utils;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  *
  * @author eeeeeeeeeeeeeeeeeeee
@@ -24,5 +30,53 @@ public class Utils {
             }
         }
         return -1;
+    }
+    
+    public static boolean validateDate(String dateToValidate) throws Exception
+    {
+        if(dateToValidate == null){
+                return false;
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+
+        try {
+
+                //if not valid, it will throw ParseException
+                Date date = sdf.parse(dateToValidate);
+                System.out.println(date);
+
+        } catch (ParseException e) {
+
+                return false;
+        }
+
+        return true;
+    }
+    
+    public static Date createDateFromString(String date) throws ParseException
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.parse(date);
+    }
+    
+    public static String formatDateBR(Date date)
+    {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        return df.format(date);
+    }
+    
+    public static boolean isStringInteger(String input)
+    {
+       try
+       {
+          Integer.parseInt( input );
+          return true;
+       }
+       catch(NumberFormatException ex)
+       {
+          return false;
+       }
     }
 }

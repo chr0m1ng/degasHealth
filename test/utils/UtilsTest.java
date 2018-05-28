@@ -1,4 +1,4 @@
-package facade;
+package utils;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,12 +6,16 @@ package facade;
  * and open the template in the editor.
  */
 
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static utils.Utils.*;
 
 /**
  *
@@ -39,15 +43,32 @@ public class UtilsTest {
     }
     
     @Test
-    public void testFindSpecialChar() {
+    public void testFindSpecialChar() 
+    {
         int res;
-        res = utils.Utils.findSpecialChar("Rudinei Rodrigues");
+        res = findSpecialChar("Rudinei Rodrigues");
         assertEquals(res, -1);
-        res = utils.Utils.findSpecialChar("Rudine%  Rodrigues");
+        res = findSpecialChar("Rudine%  Rodrigues");
         assertEquals(res, 6);
-        res = utils.Utils.findSpecialChar("s@stetest");
+        res = findSpecialChar("s@stetest");
         assertEquals(res, 1);
     }
+    
+    @Test
+    public void testValidateDate()
+    {
+        try {
+            boolean res;
+            
+            res = validateDate("12/02/1984");
+            assertEquals(res, true);
+            res = validateDate("31/04/2013");
+            assertEquals(res, false);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

@@ -89,7 +89,7 @@ public class FacadeTest {
 //
 //            res = facade.encontraMedico("36311");
 //            assertEquals("Larissa Pereira%F%36311%Brasil%22/01/1977%13/08/2005%07/11/1999", res);
-//
+
 //            /*-----------------Mais testes ap�s nova persist�ncia-----------------------------*/
 //
 //            facade = new Facade();

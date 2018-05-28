@@ -8,6 +8,9 @@ package facade;
 import database.ConexaoDB;
 import database.MedicoDAO;
 import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static utils.Utils.*;
 
 /**
  *
@@ -29,5 +32,23 @@ public class Facade {
             return e.getMessage();
         }
         return "Medico inserido!";
+    }
+    
+    public String encontraMedico(String pesquisa)
+    {
+        try 
+        {
+            Medico m;
+            Connection conn = ConexaoDB.getConexaoMySQL();
+            if(isStringInteger(pesquisa))
+                m = MedicoDAO.consultarMedicoPorCRM(Integer.parseInt(pesquisa), conn);
+            else
+                m = MedicoDAO.consultarMedicoPorNome(pesquisa, conn);
+            return m.toString();
+        } 
+        catch (Exception ex) 
+        {
+            return null;
+        }
     }
 }

@@ -5,10 +5,9 @@
  */
 package facade;
 
-import database.ConexaoDB;
-import database.MedicoDAO;
-import java.sql.Connection;
 import java.util.Date;
+
+import static utils.Utils.*;
 
 /**
  *
@@ -59,19 +58,7 @@ public class Medico {
     }
 
     public final void setCRM(String CRM) throws Exception {
-        try
-        {
-            this.CRM = Integer.parseInt(CRM);
-            Connection conn = ConexaoDB.getConexaoMySQL();
-            Medico m = MedicoDAO.consultarMedicoPorCRM(this.CRM, conn);
-            if(m != null)
-                throw new Exception("ERRO! CRM J� existente!");
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            throw e;
-        }
+        this.CRM = Integer.parseInt(CRM);
     }
 
     public String getNacionalidade() {
@@ -90,24 +77,44 @@ public class Medico {
         return DataNascimento;
     }
 
-    public final void setDataNascimento(String DataNascimento) {
-        this.DataNascimento = new Date(DataNascimento);
+    public final void setDataNascimento(String DataNascimento) throws Exception {
+        if(validateDate(DataNascimento))
+        {
+            this.DataNascimento = createDateFromString(DataNascimento);
+        }
+            
+        else
+            throw new Exception("ERRO! Data Inv�lida!");
     }
 
     public Date getDataAdmissao() {
         return DataAdmissao;
     }
 
-    public final void setDataAdmissao(String DataAdmissao) {
-        this.DataAdmissao = new Date(DataAdmissao);
+    public final void setDataAdmissao(String DataAdmissao) throws Exception {
+        if(validateDate(DataAdmissao))
+            this.DataAdmissao = createDateFromString(DataAdmissao);
+        else
+            throw new Exception("ERRO! Data Inv�lida!");
     }
 
     public Date getDataFormatura() {
         return DataFormatura;
     }
 
-    public final void setDataFormatura(String DataFormatura) {
-        this.DataFormatura = new Date(DataFormatura);
+    public final void setDataFormatura(String DataFormatura) throws Exception {
+        if(validateDate(DataFormatura))
+            this.DataFormatura = createDateFromString(DataFormatura);
+        else
+            throw new Exception("ERRO! Data Inv�lida!");
+        if(getDataFormatura().after(getDataAdmissao()))
+            throw new Exception("ERRO! Inconsistencia de datas: Formatura posterior a admiss�o!");
+    }
+    
+    @Override
+    public String toString()
+    {
+        return getNome() + "%" + getSexo() + "%" + getCRM() + "%" + getNacionalidade() + "%" + formatDateBR(getDataNascimento()) + "%" + formatDateBR(getDataAdmissao()) + "%" + formatDateBR(getDataFormatura());
     }
     
 }
