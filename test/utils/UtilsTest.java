@@ -69,10 +69,18 @@ public class UtilsTest {
         }
     }
     
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void testIsStringInteger()
+    {
+        boolean res;
+        
+        res = isStringInteger("arara");
+        assertEquals(res, false);
+        
+        res = isStringInteger("123");
+        assertEquals(res, true);
+        
+        res = isStringInteger("ara123");
+        assertEquals(res, false);
+    }
 }

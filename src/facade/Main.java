@@ -5,13 +5,6 @@
  */
 package facade;
 
-import database.ConexaoDB;
-import database.MedicoDAO;
-import java.sql.Connection;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static utils.Utils.validateDate;
 
 /**
  *
@@ -20,7 +13,5 @@ import static utils.Utils.validateDate;
 public class Main {
     public static void main (String argv[])
     {
-        
     }
-    
 }

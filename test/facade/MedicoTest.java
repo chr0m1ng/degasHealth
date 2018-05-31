@@ -5,6 +5,7 @@
  */
 package facade;
 
+import tipos.Medico;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

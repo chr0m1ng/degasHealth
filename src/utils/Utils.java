@@ -8,7 +8,6 @@ package utils;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -35,7 +34,7 @@ public class Utils {
     public static boolean validateDate(String dateToValidate) throws Exception
     {
         if(dateToValidate == null){
-                return false;
+            return false;
         }
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -43,13 +42,12 @@ public class Utils {
 
         try {
 
-                //if not valid, it will throw ParseException
-                Date date = sdf.parse(dateToValidate);
-                System.out.println(date);
+            //if not valid, it will throw ParseException
+            Date date = sdf.parse(dateToValidate);
 
         } catch (ParseException e) {
 
-                return false;
+            return false;
         }
 
         return true;

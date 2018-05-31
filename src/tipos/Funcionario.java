@@ -3,34 +3,43 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package facade;
+package tipos;
 
 import java.util.Date;
-
-import static utils.Utils.*;
+import static utils.Utils.createDateFromString;
+import static utils.Utils.formatDateBR;
+import static utils.Utils.validateDate;
 
 /**
  *
  * @author eeeeeeeeeeeeeeeeeeee
  */
-public class Medico {
+public class Funcionario {
     private String Nome;
     private char Sexo;
-    private int CRM;
     private String Nacionalidade;
     private Date DataNascimento;
     private Date DataAdmissao;
     private Date DataFormatura;
+    private String tipoCodigo;
+    private int codigo;
+    private String tipoFuncionario;
     
-    public Medico(String nome, String sexo, String crm, String nacionalidade, String dataNasc, String dataAdmissao, String dataFormatura) throws Exception
+    public Funcionario()
+    {
+    }
+    
+    public Funcionario(String nome, String sexo, String nacionalidade, String dataNasc, String dataAdmissao, String dataFormatura, String tipoCodigo, int codigo, String tipoFuncionario) throws Exception
     {
         setNome(nome);
         setSexo(sexo);
-        setCRM(crm);
         setNacionalidade(nacionalidade);
         setDataNascimento(dataNasc);
         setDataAdmissao(dataAdmissao);
         setDataFormatura(dataFormatura);
+        setTipoCodigo(tipoCodigo);
+        setCodigo(codigo);
+        setTipoFuncionario(tipoFuncionario);
     }
     
     public String getNome() {
@@ -52,15 +61,7 @@ public class Medico {
     public final void setSexo(String Sexo) {
         this.Sexo = Sexo.charAt(0);
     }
-
-    public int getCRM() {
-        return CRM;
-    }
-
-    public final void setCRM(String CRM) throws Exception {
-        this.CRM = Integer.parseInt(CRM);
-    }
-
+    
     public String getNacionalidade() {
         return Nacionalidade;
     }
@@ -84,7 +85,7 @@ public class Medico {
         }
             
         else
-            throw new Exception("ERRO! Data Inv�lida!");
+            throw new Exception("ERRO! Data Inválida!");
     }
 
     public Date getDataAdmissao() {
@@ -95,7 +96,9 @@ public class Medico {
         if(validateDate(DataAdmissao))
             this.DataAdmissao = createDateFromString(DataAdmissao);
         else
-            throw new Exception("ERRO! Data Inv�lida!");
+            throw new Exception("ERRO! Data Inválida!");
+        if(getDataFormatura() != null && getDataFormatura().after(getDataAdmissao()))
+            throw new Exception("ERRO! Inconsistencia de datas: Formatura posterior a admissão!");
     }
 
     public Date getDataFormatura() {
@@ -106,15 +109,38 @@ public class Medico {
         if(validateDate(DataFormatura))
             this.DataFormatura = createDateFromString(DataFormatura);
         else
-            throw new Exception("ERRO! Data Inv�lida!");
+            throw new Exception("ERRO! Data Inválida!");
         if(getDataFormatura().after(getDataAdmissao()))
-            throw new Exception("ERRO! Inconsistencia de datas: Formatura posterior a admiss�o!");
+            throw new Exception("ERRO! Inconsistencia de datas: Formatura posterior a admissão!");
+    }
+
+    public String getTipoCodigo() {
+        return tipoCodigo;
+    }
+
+    public final void setTipoCodigo(String tipoCodigo) {
+        this.tipoCodigo = tipoCodigo;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public final void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getTipoFuncionario() {
+        return tipoFuncionario;
+    }
+
+    public final void setTipoFuncionario(String tipoFuncionario) {
+        this.tipoFuncionario = tipoFuncionario;
     }
     
     @Override
     public String toString()
     {
-        return getNome() + "%" + getSexo() + "%" + getCRM() + "%" + getNacionalidade() + "%" + formatDateBR(getDataNascimento()) + "%" + formatDateBR(getDataAdmissao()) + "%" + formatDateBR(getDataFormatura());
+        return getNome() + "%" + getSexo() + "%" + getCodigo()+ "%" + getNacionalidade() + "%" + formatDateBR(getDataNascimento()) + "%" + formatDateBR(getDataAdmissao()) + "%" + formatDateBR(getDataFormatura());
     }
-    
 }
