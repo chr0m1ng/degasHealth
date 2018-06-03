@@ -46,3 +46,14 @@ CREATE TABLE Auxiliar(
 );
 
 SELECT * FROM Auxiliar;
+
+DROP TABLE IF EXISTS Procedimento;
+CREATE TABLE Procedimento(
+  id INTEGER NOT NULL AUTO_INCREMENT,
+  codigo INTEGER NOT NULL,
+  descricao VARCHAR(100) NOT NULL,
+  valor DECIMAL(10, 2) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+SELECT * FROM Procedimento;

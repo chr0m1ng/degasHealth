@@ -77,4 +77,19 @@ public class Utils {
           return false;
        }
     }
+    
+    public static String formatDoubleToString(double number)
+    {
+        String num = String.valueOf(number);
+        num = num.replace(".", ",");
+        
+        
+        int decimal = (int) number;
+        double fractional = number - decimal;
+        
+        if(fractional == 0)
+            num = num.substring(0, num.indexOf(","));
+
+        return num;
+    }
 }

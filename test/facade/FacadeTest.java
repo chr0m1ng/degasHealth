@@ -361,65 +361,67 @@ public class FacadeTest {
 ///*-------------------------Procedimentos --------------------------------------------*/
 //
 //            // Procdimento: Codigo, Descri��o, Custo
-//            res = Facade.novoProcedimento("763236","Ponte de Safena","50000");
-//            assertEquals("Procedimento Incluido com Sucesso", res);
-//
-//            res = Facade.novoProcedimento("763236","Transplante Cora��o","90000");
-//            assertEquals("C�digo de Procedimento Ja Cadastrado", res);
-//            res = Facade.novoProcedimento("377523","Ponte de Safena","90000");
-//            assertEquals("Descri��o de Procedimento Ja Cadastrado", res);
-//            res = Facade.novoProcedimento("377523","Transplante Cora��o","90000");
-//            assertEquals("Procedimento Incluido com Sucesso", res);
-//
-//            res = Facade.novoProcedimento("404482","Redu��o de Fratura","2000.0");
-//            assertEquals("Erro: valor de custo inv�ido", res);
-//            res = Facade.novoProcedimento("404482","Redu��o de Fratura","R2000");
-//            assertEquals("Erro: valor de custo inv�ido", res);
-//            res = Facade.novoProcedimento("404482","Redu��o de Fratura","R$2000");
-//            assertEquals("Procedimento Incluido com Sucesso", res);
-//
-//            res = Facade.novoProcedimento("894275","Amputa��o de Membro","$15000,0");
-//            assertEquals("Procedimento Incluido com Sucesso", res);
-//
-//            res = Facade.novoProcedimento("839530","Curativo","50");
-//            assertEquals("Procedimento Incluido com Sucesso", res);
-//
-//            res = Facade.novoProcedimento("200752","Nebuliza��o","100");
-//            assertEquals("Procedimento Incluido com Sucesso", res);
-//
-//            res = Facade.novoProcedimento("886244","Cateterismo","10000");
-//            assertEquals("Procedimento Incluido com Sucesso", res);
-//
-//            res = Facade.encontraProcedimento("404482");
-//            assertEquals("404482%Redu��o de Fratura%2000", res);
-//
-//            res = Facade.encontraProcedimento("Cateterismo");
-//            assertEquals("886244%Cateterismo%10000", res);
-//
-//            res = Facade.encontraProcedimento("12345");
-//            assertEquals("Procedimento n�o cadastrado", res);
-//
-//            res = Facade.encontraProcedimento("Obtura��o");
-//            assertEquals("Procedimento n�o cadastrado", res);
-//
-//            res = Facade.alteraProcedimento("894275", "Valor", "12000");
-//            assertEquals("Procedimento alterado com sucesso", res);
-//
-//            res = Facade.alteraProcedimento("200752", "Descricao", "Respira��o Auxiliada");
-//            assertEquals("Procedimento alterado com sucesso", res);
+            facade = new Facade();
+            
+            res = facade.novoProcedimento("763236","Ponte de Safena","50000");
+            assertEquals("Procedimento Incluido com Sucesso", res);
+
+            res = facade.novoProcedimento("763236","Transplante Coração","90000");
+            assertEquals("Código de Procedimento Ja Cadastrado", res);
+            res = facade.novoProcedimento("377523","Ponte de Safena","90000");
+            assertEquals("Descrição de Procedimento Ja Cadastrado", res);
+            res = facade.novoProcedimento("377523","Transplante Coração","90000");
+            assertEquals("Procedimento Incluido com Sucesso", res);
+
+            res = facade.novoProcedimento("404482","Redução de Fratura","2000.0");
+            assertEquals("Erro: valor de custo inválido", res);
+            res = facade.novoProcedimento("404482","Redução de Fratura","R2000");
+            assertEquals("Erro: valor de custo inválido", res);
+            res = facade.novoProcedimento("404482","Redução de Fratura","R$2000");
+            assertEquals("Procedimento Incluido com Sucesso", res);
+
+            res = facade.novoProcedimento("894275","Amputação de Membro","$15000,0");
+            assertEquals("Procedimento Incluido com Sucesso", res);
+
+            res = facade.novoProcedimento("839530","Curativo","50");
+            assertEquals("Procedimento Incluido com Sucesso", res);
+
+            res = facade.novoProcedimento("200752","Nebulização","100");
+            assertEquals("Procedimento Incluido com Sucesso", res);
+
+            res = facade.novoProcedimento("886244","Cateterismo","10000");
+            assertEquals("Procedimento Incluido com Sucesso", res);
+
+            res = facade.encontraProcedimento("404482");
+            assertEquals("404482%Redução de Fratura%2000", res);
+
+            res = facade.encontraProcedimento("Cateterismo");
+            assertEquals("886244%Cateterismo%10000", res);
+
+            res = facade.encontraProcedimento("12345");
+            assertEquals("Procedimento não cadastrado", res);
+
+            res = facade.encontraProcedimento("Obturação");
+            assertEquals("Procedimento não cadastrado", res);
+
+            res = facade.alteraProcedimento("894275", "Valor", "12000");
+            assertEquals("Procedimento alterado com sucesso", res);
+
+            res = facade.alteraProcedimento("200752", "Descricao", "Respiração Auxiliada");
+            assertEquals("Procedimento alterado com sucesso", res);
 //
 ///*-----------------------------Para verificar a persist�ncia ---------------*/		
 //
-//            facade = new Facade();
-//
-//            res = Facade.encontraProcedimento("404482");
-//            assertEquals("404482%Redu��o de Fratura%2000", res);
-//
-//            res = Facade.encontraProcedimento("Cateterismo");
-//            assertEquals("886244%Cateterismo%10000", res);
-//
-//            res = Facade.encontraProcedimento("12345");
-//            assertEquals("Procedimento n�o cadastrado", res);
+            facade = new Facade();
+
+            res = facade.encontraProcedimento("404482");
+            assertEquals("404482%Redução de Fratura%2000", res);
+
+            res = facade.encontraProcedimento("Cateterismo");
+            assertEquals("886244%Cateterismo%10000", res);
+
+            res = facade.encontraProcedimento("12345");
+            assertEquals("Procedimento não cadastrado", res);
 //
 ///* ------------------ Especialidades M�dicas -----------------------*/
 //            // Especialidade: c�digo, descri��o

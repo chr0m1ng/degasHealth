@@ -223,4 +223,92 @@ public class Facade {
             throw ex;
         }
     }
+    
+    public String novoProcedimento(String codigo, String Descricao, String Custo)
+    {
+        try
+        {
+            Procedimento p = new Procedimento(codigo, Descricao, Custo);
+            Connection conn = ConexaoDB.getConexaoMySQL();
+            ProcedimentoDAO.InserirProcedimento(p, conn);
+        }
+        catch (Exception ex)
+        {
+            return ex.getMessage();
+        }
+        return "Procedimento Incluido com Sucesso";
+    }
+    
+    public String encontraProcedimento(String pesquisa)
+    {
+        try 
+        {
+            Procedimento p;
+            Connection conn = ConexaoDB.getConexaoMySQL();
+            if(isStringInteger(pesquisa))
+                p = ProcedimentoDAO.consultarProcedimento("codigo", pesquisa, conn);
+            else
+                p = ProcedimentoDAO.consultarProcedimento("descricao", pesquisa, conn);
+            
+            if(p == null)
+                return "Procedimento não cadastrado";
+            
+            return p.toString();
+        } 
+        catch (Exception ex) 
+        {
+            return null;
+        }
+    }
+    
+    public String alteraProcedimento(String codigo, String campo, String novoValor)
+    {
+        String res = null;
+        try 
+        {
+            if(isDadosValidosProcedimento(campo, novoValor)) 
+            {
+                try
+                {
+                    Connection conn = ConexaoDB.getConexaoMySQL();
+                    res = ProcedimentoDAO.alterarProcedimentoPorCodigo(Integer.parseInt(codigo), campo, novoValor, conn);
+                    return res;
+                }
+                catch (Exception ex)
+                {
+                    System.out.println("facade.Facade.alteraAuxiliar() " + ex.getMessage());
+                }
+            }
+        } 
+        catch (Exception ex) 
+        {
+            return ex.getMessage();
+        }
+        return res;
+    }
+    
+    private boolean isDadosValidosProcedimento(String campo, String valor) throws Exception 
+    {
+        try 
+        {
+            Procedimento pTest = new Procedimento();
+            
+            switch(campo)
+            {
+                case "Descricao":
+                    pTest.setDescricao(valor);
+                    break;
+                case "Valor":
+                    pTest.setValor(valor);
+                    break;
+                default:
+                    throw new Exception("Campo não alteravel");
+            }
+            return true;
+        }
+        catch (Exception ex) 
+        {
+            throw ex;
+        }
+    }
 }
