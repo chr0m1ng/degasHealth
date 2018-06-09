@@ -6,9 +6,8 @@
 package tipos;
 
 import java.util.Date;
-import static utils.Utils.createDateFromString;
-import static utils.Utils.formatDateBR;
-import static utils.Utils.validateDate;
+import static utils.DateUtils.*;
+import static utils.StringUtils.*;
 
 /**
  *
@@ -31,15 +30,15 @@ public class Funcionario {
     
     public Funcionario(String nome, String sexo, String nacionalidade, String dataNasc, String dataAdmissao, String dataFormatura, String tipoCodigo, int codigo, String tipoFuncionario) throws Exception
     {
-        setNome(nome);
-        setSexo(sexo);
-        setNacionalidade(nacionalidade);
-        setDataNascimento(dataNasc);
-        setDataAdmissao(dataAdmissao);
-        setDataFormatura(dataFormatura);
-        setTipoCodigo(tipoCodigo);
-        setCodigo(codigo);
-        setTipoFuncionario(tipoFuncionario);
+        this.setNome(nome);
+        this.setSexo(sexo);
+        this.setNacionalidade(nacionalidade);
+        this.setDataNascimento(dataNasc);
+        this.setDataAdmissao(dataAdmissao);
+        this.setDataFormatura(dataFormatura);
+        this.setTipoCodigo(tipoCodigo);
+        this.setCodigo(codigo);
+        this.setTipoFuncionario(tipoFuncionario);
     }
     
     public String getNome() {
@@ -47,7 +46,7 @@ public class Funcionario {
     }
 
     public final void setNome(String Nome) throws Exception{
-        int pos = utils.Utils.findSpecialChar(Nome);
+        int pos = findSpecialChar(Nome);
         if(pos == -1)
             this.Nome = Nome;
         else
@@ -67,7 +66,7 @@ public class Funcionario {
     }
 
     public final void setNacionalidade(String Nacionalidade) throws Exception {
-        int pos = utils.Utils.findSpecialChar(Nacionalidade);
+        int pos = findSpecialChar(Nacionalidade);
         if(pos == -1)
             this.Nacionalidade = Nacionalidade;
         else
@@ -97,7 +96,7 @@ public class Funcionario {
             this.DataAdmissao = createDateFromString(DataAdmissao);
         else
             throw new Exception("ERRO! Data Inválida!");
-        if(getDataFormatura() != null && getDataFormatura().after(getDataAdmissao()))
+        if(this.getDataFormatura() != null && this.getDataFormatura().after(this.getDataAdmissao()))
             throw new Exception("ERRO! Inconsistencia de datas: Formatura posterior a admissão!");
     }
 
@@ -110,7 +109,7 @@ public class Funcionario {
             this.DataFormatura = createDateFromString(DataFormatura);
         else
             throw new Exception("ERRO! Data Inválida!");
-        if(getDataFormatura().after(getDataAdmissao()))
+        if(this.getDataFormatura().after(this.getDataAdmissao()))
             throw new Exception("ERRO! Inconsistencia de datas: Formatura posterior a admissão!");
     }
 
@@ -141,6 +140,6 @@ public class Funcionario {
     @Override
     public String toString()
     {
-        return getNome() + "%" + getSexo() + "%" + getCodigo()+ "%" + getNacionalidade() + "%" + formatDateBR(getDataNascimento()) + "%" + formatDateBR(getDataAdmissao()) + "%" + formatDateBR(getDataFormatura());
+        return this.getNome() + "%" + this.getSexo() + "%" + this.getCodigo()+ "%" + this.getNacionalidade() + "%" + formatDateBR(this.getDataNascimento()) + "%" + formatDateBR(this.getDataAdmissao()) + "%" + formatDateBR(this.getDataFormatura());
     }
 }

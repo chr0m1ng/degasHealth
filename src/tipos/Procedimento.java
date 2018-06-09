@@ -7,7 +7,7 @@ package tipos;
 
 import database.ConexaoDB;
 import database.ProcedimentoDAO;
-import static utils.Utils.*;
+import static utils.DoubleUtils.*;
 
 /**
  *

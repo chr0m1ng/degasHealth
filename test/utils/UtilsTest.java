@@ -6,16 +6,10 @@ package utils;
  * and open the template in the editor.
  */
 
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import static utils.Utils.*;
 
 /**
  *
@@ -40,47 +34,5 @@ public class UtilsTest {
     
     @After
     public void tearDown() {
-    }
-    
-    @Test
-    public void testFindSpecialChar() 
-    {
-        int res;
-        res = findSpecialChar("Rudinei Rodrigues");
-        assertEquals(res, -1);
-        res = findSpecialChar("Rudine%  Rodrigues");
-        assertEquals(res, 6);
-        res = findSpecialChar("s@stetest");
-        assertEquals(res, 1);
-    }
-    
-    @Test
-    public void testValidateDate()
-    {
-        try {
-            boolean res;
-            
-            res = validateDate("12/02/1984");
-            assertEquals(res, true);
-            res = validateDate("31/04/2013");
-            assertEquals(res, false);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-    @Test
-    public void testIsStringInteger()
-    {
-        boolean res;
-        
-        res = isStringInteger("arara");
-        assertEquals(res, false);
-        
-        res = isStringInteger("123");
-        assertEquals(res, true);
-        
-        res = isStringInteger("ara123");
-        assertEquals(res, false);
     }
 }

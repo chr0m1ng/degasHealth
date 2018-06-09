@@ -5,10 +5,11 @@
  */
 package facade;
 
-import tipos.*;
-import database.*;
-import java.sql.Connection;
-import static utils.Utils.*;
+import utils.EquipamentoUtils;
+import utils.FuncionarioUtils;
+import utils.ProcedimentoUtils;
+import utils.EspecialidadeUtils;
+import utils.MaterialUtils;
 
 /**
  *
@@ -19,296 +20,127 @@ public class Facade {
     
     public String novoMedico(String nome, String sexo, String crm, String nacionalidade, String dataNasc, String dataAdmissao, String dataFormatura)
     {
-        try
-        {
-            Medico m = new Medico(nome, sexo, crm, nacionalidade, dataNasc, dataAdmissao, dataFormatura);
-            Connection conn = ConexaoDB.getConexaoMySQL();
-            FuncionarioDAO.InserirFuncionario(m,conn);
-        }
-        catch (Exception e)
-        {
-            return e.getMessage();
-        }
-        return "Medico inserido!";
+        String res = FuncionarioUtils.novoMedico(nome, sexo, crm, nacionalidade, dataNasc, dataAdmissao, dataFormatura);
+        return res;
     }
     
     public String encontraMedico(String pesquisa)
     {
-        try 
-        {
-            Medico m;
-            Connection conn = ConexaoDB.getConexaoMySQL();
-            if(isStringInteger(pesquisa))
-                m = (Medico) FuncionarioDAO.consultarFuncionarioPorCodigo(Integer.parseInt(pesquisa), conn, "Medico", "CRM");
-            else
-                m = (Medico) FuncionarioDAO.consultarFuncionarioPorNome(pesquisa, conn, "Medico", "CRM");
-            return m.toString();
-        } 
-        catch (Exception ex) 
-        {
-            return null;
-        }
+        String res = FuncionarioUtils.encontraFuncionario(pesquisa, "Medico", "CRM");
+        return res;
     }
     
     public String alteraMedico(String crm, String campo, String novoValor)
     {
-        String res = null;
-        try 
-        {
-            if(isDadosValidosFuncionario(Integer.parseInt(crm), campo, novoValor, "Medico", "CRM")) 
-            {
-                try
-                {
-                    Connection conn = ConexaoDB.getConexaoMySQL();
-                    res = FuncionarioDAO.alterarFuncionarPorCodigo(Integer.parseInt(crm), campo, novoValor, conn, "Medico", "CRM");
-                    return res;
-                }
-                catch (Exception ex)
-                {
-                    System.out.println("facade.Facade.alteraMedico() " + ex.getMessage());
-                }
-            }
-        } 
-        catch (Exception ex) 
-        {
-            return ex.getMessage();
-        }
+        String res = FuncionarioUtils.alteraFuncionario(crm, campo, novoValor, "Medico", "CRM");
         return res;
     }
     
     public String novoEnfermeiro(String nome, String sexo, String coren, String nacionalidade, String dataNasc, String dataAdmissao, String dataFormatura)
     {
-        try
-        {
-            Enfermeiro e = new Enfermeiro(nome, sexo, coren, nacionalidade, dataNasc, dataAdmissao, dataFormatura);
-            Connection conn = ConexaoDB.getConexaoMySQL();
-            FuncionarioDAO.InserirFuncionario(e, conn);
-        }
-        catch (Exception ex)
-        {
-            return ex.getMessage();
-        }
-        return "Enfermeiro inserido!";
+        String res = FuncionarioUtils.novoEnfermeiro(nome, sexo, coren, nacionalidade, dataNasc, dataAdmissao, dataFormatura);
+        return res;
     }
     
     public String encontraEnfermeiro(String pesquisa)
     {
-        try 
-        {
-            Enfermeiro e;
-            Connection conn = ConexaoDB.getConexaoMySQL();
-            if(isStringInteger(pesquisa))
-                e = (Enfermeiro) FuncionarioDAO.consultarFuncionarioPorCodigo(Integer.parseInt(pesquisa), conn, "Enfermeiro", "COREN");
-            else
-                e = (Enfermeiro) FuncionarioDAO.consultarFuncionarioPorNome(pesquisa, conn, "Enfermeiro", "COREN");
-            return e.toString();
-        } 
-        catch (Exception ex) 
-        {
-            return null;
-        }
+        String res = FuncionarioUtils.encontraFuncionario(pesquisa, "Enfermeiro", "COREN");
+        return res;
     }
     
     public String alteraEnfermeiro(String coren, String campo, String novoValor)
     {
-        String res = null;
-        try 
-        {
-            if(isDadosValidosFuncionario(Integer.parseInt(coren), campo, novoValor, "Enfermeiro", "COREN")) 
-            {
-                try
-                {
-                    Connection conn = ConexaoDB.getConexaoMySQL();
-                    res = FuncionarioDAO.alterarFuncionarPorCodigo(Integer.parseInt(coren), campo, novoValor, conn, "Enfermeiro", "COREN");
-                    return res;
-                }
-                catch (Exception ex)
-                {
-                    System.out.println("facade.Facade.alteraEnfermeiro() " + ex.getMessage());
-                }
-            }
-        } 
-        catch (Exception ex) 
-        {
-            return ex.getMessage();
-        }
+        String res = FuncionarioUtils.alteraFuncionario(coren, campo, novoValor, "Enfermeiro", "COREN");
         return res;
     }
     
     public String novoAuxiliar(String nome, String sexo, String coren, String nacionalidade, String dataNasc, String dataAdmissao, String dataFormatura)
     {
-        try
-        {
-            Auxiliar a = new Auxiliar(nome, sexo, coren, nacionalidade, dataNasc, dataAdmissao, dataFormatura);
-            Connection conn = ConexaoDB.getConexaoMySQL();
-            FuncionarioDAO.InserirFuncionario(a, conn);
-        }
-        catch (Exception ex)
-        {
-            return ex.getMessage();
-        }
-        return "Auxiliar/Técnico inserido!";
+        String res = FuncionarioUtils.novoAuxiliar(nome, sexo, coren, nacionalidade, dataNasc, dataAdmissao, dataFormatura);
+        return res;
     }
     
     public String encontraAuxiliar(String pesquisa)
     {
-        try 
-        {
-            Auxiliar a;
-            Connection conn = ConexaoDB.getConexaoMySQL();
-            if(isStringInteger(pesquisa))
-                a = (Auxiliar) FuncionarioDAO.consultarFuncionarioPorCodigo(Integer.parseInt(pesquisa), conn, "Auxiliar", "COREN");
-            else
-                a = (Auxiliar) FuncionarioDAO.consultarFuncionarioPorNome(pesquisa, conn, "Auxiliar", "COREN");
-            return a.toString();
-        } 
-        catch (Exception ex) 
-        {
-            return null;
-        }
+        String res = FuncionarioUtils.encontraFuncionario(pesquisa, "Auxiliar", "COREN");
+        return res;
     }
     
     public String alteraAuxiliar(String coren, String campo, String novoValor)
     {
-        String res = null;
-        try 
-        {
-            if(isDadosValidosFuncionario(Integer.parseInt(coren), campo, novoValor, "Auxiliar", "COREN")) 
-            {
-                try
-                {
-                    Connection conn = ConexaoDB.getConexaoMySQL();
-                    res = FuncionarioDAO.alterarFuncionarPorCodigo(Integer.parseInt(coren), campo, novoValor, conn, "Auxiliar", "COREN");
-                    return res;
-                }
-                catch (Exception ex)
-                {
-                    System.out.println("facade.Facade.alteraAuxiliar() " + ex.getMessage());
-                }
-            }
-        } 
-        catch (Exception ex) 
-        {
-            return ex.getMessage();
-        }
+        String res = FuncionarioUtils.alteraFuncionario(coren, campo, novoValor, "Auxiliar", "COREN");
         return res;
     }
 
-    private boolean isDadosValidosFuncionario(int codigo, String campo, String novoValor, String tipoFuncionario, String tipoCodigo) throws Exception 
-    {
-        try 
-        {
-            if(campo.equals("DtNasc") || campo.equals("DtAdmiss") || campo.equals("DtFormatura"))
-            {                                
-                Connection conn = ConexaoDB.getConexaoMySQL();
-                Funcionario fTest = FuncionarioDAO.consultarFuncionarioPorCodigo(codigo, conn, tipoFuncionario, tipoCodigo);
-
-                switch (campo) 
-                {
-                    case "DtNasc":
-                        fTest.setDataNascimento(novoValor);
-                        break;
-                    case "DtAdmiss":
-                        fTest.setDataAdmissao(novoValor);
-                        break;
-                    default:
-                        fTest.setDataFormatura(novoValor);
-                        break;
-                }
-            }
-            return true;
-        }
-        catch (Exception ex) 
-        {
-            throw ex;
-        }
-    }
-    
     public String novoProcedimento(String codigo, String Descricao, String Custo)
     {
-        try
-        {
-            Procedimento p = new Procedimento(codigo, Descricao, Custo);
-            Connection conn = ConexaoDB.getConexaoMySQL();
-            ProcedimentoDAO.InserirProcedimento(p, conn);
-        }
-        catch (Exception ex)
-        {
-            return ex.getMessage();
-        }
-        return "Procedimento Incluido com Sucesso";
+        String res = ProcedimentoUtils.novoProcedimento(codigo, Descricao, Custo);
+        return res;
     }
     
     public String encontraProcedimento(String pesquisa)
     {
-        try 
-        {
-            Procedimento p;
-            Connection conn = ConexaoDB.getConexaoMySQL();
-            if(isStringInteger(pesquisa))
-                p = ProcedimentoDAO.consultarProcedimento("codigo", pesquisa, conn);
-            else
-                p = ProcedimentoDAO.consultarProcedimento("descricao", pesquisa, conn);
-            
-            if(p == null)
-                return "Procedimento não cadastrado";
-            
-            return p.toString();
-        } 
-        catch (Exception ex) 
-        {
-            return null;
-        }
+        String res = ProcedimentoUtils.encontraProcedimento(pesquisa);
+        return res;
     }
     
     public String alteraProcedimento(String codigo, String campo, String novoValor)
     {
-        String res = null;
-        try 
-        {
-            if(isDadosValidosProcedimento(campo, novoValor)) 
-            {
-                try
-                {
-                    Connection conn = ConexaoDB.getConexaoMySQL();
-                    res = ProcedimentoDAO.alterarProcedimentoPorCodigo(Integer.parseInt(codigo), campo, novoValor, conn);
-                    return res;
-                }
-                catch (Exception ex)
-                {
-                    System.out.println("facade.Facade.alteraAuxiliar() " + ex.getMessage());
-                }
-            }
-        } 
-        catch (Exception ex) 
-        {
-            return ex.getMessage();
-        }
+        String res = ProcedimentoUtils.alteraProcedimento(codigo, campo, novoValor);
         return res;
     }
     
-    private boolean isDadosValidosProcedimento(String campo, String valor) throws Exception 
+    public String novaEspecialidade(String codigo, String descricao)
     {
-        try 
-        {
-            Procedimento pTest = new Procedimento();
-            
-            switch(campo)
-            {
-                case "Descricao":
-                    pTest.setDescricao(valor);
-                    break;
-                case "Valor":
-                    pTest.setValor(valor);
-                    break;
-                default:
-                    throw new Exception("Campo não alteravel");
-            }
-            return true;
-        }
-        catch (Exception ex) 
-        {
-            throw ex;
-        }
+        String res = EspecialidadeUtils.novaEspecialidade(codigo, descricao);
+        return res;
+    }
+    
+    public String encontraEspecialidade(String pesquisa)
+    {
+        String res = EspecialidadeUtils.encontraEspecialidade(pesquisa);
+        return res;
+    }
+    
+    public String novoEquipamento(String codigo, String descricao, String valor)
+    {
+        String res = EquipamentoUtils.novoEquipamento(codigo, descricao, valor);
+        return res;
+    }
+    
+    public String tombaEquipamento(String codigoEquipamento, String codigoTombo)
+    {
+        String res = EquipamentoUtils.tombaEquipamento(codigoEquipamento, codigoTombo);
+        return res;
+    }
+    
+    public String novoMaterial(String codigo, String descricao, String valor)
+    {
+        String res = MaterialUtils.novoMaterial(codigo, descricao, valor);
+        return res;
+    }
+    
+    public String materialProcedimento(String codigoProcedimento, String codigoMaterial)
+    {
+        String res = ProcedimentoUtils.materialProcedimento(codigoProcedimento, codigoMaterial);
+        return res;
+    }
+    
+    public String equipamentoProcedimento(String codigoProcedimento, String codigoEquipamento)
+    {
+        String res = ProcedimentoUtils.equipamentoProcedimento(codigoProcedimento, codigoEquipamento);
+        return res;
+    }
+    
+    public String listMateriaisProcedimento(String codigoProcedimento)
+    {
+        String res = ProcedimentoUtils.listMateriaisProcedimento(codigoProcedimento);
+        return res;
+    }
+    
+    public String listEquipamentosProcedimento(String codigoEquipamentos)
+    {
+        String res = ProcedimentoUtils.listEquipamentosProcedimento(codigoEquipamentos);
+        return res;
     }
 }

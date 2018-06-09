@@ -5,6 +5,10 @@
  */
 package tipos;
 
+import database.ConexaoDB;
+import database.FuncionarioDAO;
+import java.sql.Connection;
+
 
 /**
  *

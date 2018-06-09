@@ -18,10 +18,8 @@ public class Main {
         Facade facade = new Facade();
         String res;
         
-        res = facade.novoProcedimento("763236","Ponte de Safena","50000");
-        assertEquals("Procedimento Incluido com Sucesso", res);
-        
-        res = facade.novoProcedimento("763236","Transplante Coração","90000");
-        assertEquals("Código de Procedimento Ja Cadastrado", res);
+        res = facade.materialProcedimento("763236","5927"); // Ponte de Safena consome Stinter card�aco
+        assertEquals("Material Incluido com sucesso no procedimento", res);
+
     }
 }

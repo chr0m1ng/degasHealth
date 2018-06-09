@@ -22,9 +22,11 @@ public class FacadeTest {
             Facade facade = new Facade();
 
             String res;
-
-
+            
+            
 //            novo m�dico: Nome, CRM, Sexo, Nacionalidade, Data Nasc., Data Admiss., Data Formatura
+
+
 
             res = facade.novoMedico("Nardelle Moraes","M","97719","Brasil","26/08/1977","29/06/2012","28/01/2007");
             assertEquals("Medico inserido!", res);
@@ -424,339 +426,341 @@ public class FacadeTest {
             assertEquals("Procedimento não cadastrado", res);
 //
 ///* ------------------ Especialidades M�dicas -----------------------*/
-//            // Especialidade: c�digo, descri��o
-//            res = Facade.novaEspecialidade("594","Ginecologia");
-//            assertEquals("Especialidade Registrada com sucesso", res);
-//
-//            res = Facade.novaEspecialidade("594","Urologia");
-//            assertEquals("Especialidade j� cadastrada", res);
-//            res = Facade.novaEspecialidade("166","Urologia");
-//            assertEquals("Especialidade Registrada com sucesso", res);
-//
-//            res = Facade.novaEspecialidade("531","Ginecologia");
-//            assertEquals("Especialidade j� cadastrada", res);
-//            res = Facade.novaEspecialidade("531","Cardiologia");
-//            assertEquals("Especialidade Registrada com sucesso", res);
-//
-//            res = Facade.novaEspecialidade("764","Cirurgia Card�aca");
-//            assertEquals("Especialidade Registrada com sucesso", res);
-//
-//            res = Facade.novaEspecialidade("251","Ortopedia");
-//            assertEquals("Especialidade Registrada com sucesso", res);
-//
-//            res = Facade.novaEspecialidade("316","Cirurgia Ortop�dica");
-//            assertEquals("Especialidade Registrada com sucesso", res);
-//
-//            res = Facade.novaEspecialidade("465","Cl�nica Geral");
-//            assertEquals("Especialidade Registrada com sucesso", res);
-//
-//            res = Facade.encontraEspecialidade("465");
-//            assertEquals("465%Cl�nica Geral", res);
-//
-//            res = Facade.encontraEspecialidade("Cardiologia");
-//            assertEquals("531%Cardiologia", res);
+            // Especialidade: c�digo, descri��o
+            res = facade.novaEspecialidade("594","Ginecologia");
+            assertEquals("Especialidade Registrada com sucesso", res);
+
+            res = facade.novaEspecialidade("594","Urologia");
+            assertEquals("Especialidade já cadastrada", res);
+            res = facade.novaEspecialidade("166","Urologia");
+            assertEquals("Especialidade Registrada com sucesso", res);
+
+            res = facade.novaEspecialidade("531","Ginecologia");
+            assertEquals("Especialidade já cadastrada", res);
+            res = facade.novaEspecialidade("531","Cardiologia");
+            assertEquals("Especialidade Registrada com sucesso", res);
+
+            res = facade.novaEspecialidade("764","Cirurgia Cardíaca");
+            assertEquals("Especialidade Registrada com sucesso", res);
+
+            res = facade.novaEspecialidade("251","Ortopedia");
+            assertEquals("Especialidade Registrada com sucesso", res);
+
+            res = facade.novaEspecialidade("316","Cirurgia Ortopédica");
+            assertEquals("Especialidade Registrada com sucesso", res);
+
+            res = facade.novaEspecialidade("465","Clínica Geral");
+            assertEquals("Especialidade Registrada com sucesso", res);
+
+            res = facade.encontraEspecialidade("465");
+            assertEquals("465%Clínica Geral", res);
+
+            res = facade.encontraEspecialidade("Cardiologia");
+            assertEquals("531%Cardiologia", res);
 //
 ///*---------------------Equipamentos ----------------------------------------------------*/
 //            //equipamento: codigo, descricao, valor
-//            res = Facade.novoEquipamento("912","Mesa de Cirurgia","35000");
-//            assertEquals("Equipamento cadastrado com sucesso", res);
-//
-//            res = Facade.novoEquipamento("885","Maca","4000");
-//            assertEquals("Equipamento cadastrado com sucesso", res);
-//
-//            res = Facade.novoEquipamento("188","Cadeira","500");
-//            assertEquals("Equipamento cadastrado com sucesso", res);
-//
-//            res = Facade.novoEquipamento("358","Mesa de Trabalho","800");
-//            assertEquals("Equipamento cadastrado com sucesso", res);
-//
-//            res = Facade.novoEquipamento("685","Raio X","45000");
-//            assertEquals("Equipamento cadastrado com sucesso", res);
-//
-//            res = Facade.novoEquipamento("206","Ultrassom","30000");
-//            assertEquals("Equipamento cadastrado com sucesso", res);
-//
-//            res = Facade.novoEquipamento("845","Tom�grafo","800000");
-//            assertEquals("Equipamento cadastrado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("912", "MC001");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("912", "MC002");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("912", "MC002");
-//            assertEquals("Erro: Tombo j� existente", res);
-//
-//            res = Facade.tombaEquipamento("912", "MC003");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("885", "MCA001");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("885", "MCA002");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("885", "MCA003");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("885", "MCA004");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("885", "MCA005");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("188", "CAD001");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("188", "CAD002");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("188", "CAD003");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("188", "CAD004");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("188", "CAD005");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("188", "CAD006");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("188", "CAD007");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("358", "MST001");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("358", "MST002");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("358", "MST003");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("358", "MST004");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("685", "RX01");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("685", "RX02");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("206", "US01");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("206", "US02");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
-//            res = Facade.tombaEquipamento("845", "TM02");
-//            assertEquals("Equipamento tombado com sucesso", res);
-//
+            res = facade.novoEquipamento("912","Mesa de Cirurgia","35000");
+            assertEquals("Equipamento cadastrado com sucesso", res);
+
+            res = facade.novoEquipamento("885","Maca","4000");
+            assertEquals("Equipamento cadastrado com sucesso", res);
+
+            res = facade.novoEquipamento("188","Cadeira","500");
+            assertEquals("Equipamento cadastrado com sucesso", res);
+
+            res = facade.novoEquipamento("358","Mesa de Trabalho","800");
+            assertEquals("Equipamento cadastrado com sucesso", res);
+
+            res = facade.novoEquipamento("685","Raio X","45000");
+            assertEquals("Equipamento cadastrado com sucesso", res);
+
+            res = facade.novoEquipamento("206","Ultrassom","30000");
+            assertEquals("Equipamento cadastrado com sucesso", res);
+
+            res = facade.novoEquipamento("845","Tomógrafo","800000");
+            assertEquals("Equipamento cadastrado com sucesso", res);
+
+            res = facade.tombaEquipamento("912", "MC001");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("912", "MC002");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("912", "MC002");
+            assertEquals("Erro: Tombo já existente", res);
+
+            res = facade.tombaEquipamento("912", "MC003");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("885", "MCA001");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("885", "MCA002");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("885", "MCA003");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("885", "MCA004");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("885", "MCA005");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("188", "CAD001");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("188", "CAD002");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("188", "CAD003");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("188", "CAD004");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("188", "CAD005");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("188", "CAD006");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("188", "CAD007");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("358", "MST001");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("358", "MST002");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("358", "MST003");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("358", "MST004");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("685", "RX01");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("685", "RX02");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("206", "US01");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("206", "US02");
+            assertEquals("Equipamento tombado com sucesso", res);
+
+            res = facade.tombaEquipamento("845", "TM02");
+            assertEquals("Equipamento tombado com sucesso", res);
+
 //            /*-------------------Materiais -----------------------------*/
-//
-//            res = Facade.novoMaterial("2415","Fio de Sutura","2");
-//            assertEquals("Material Cadastrado com sucesso", res);
-//
-//            res = Facade.novoMaterial("3314","Gaze","2");
-//            assertEquals("Material Cadastrado com sucesso", res);
-//
-//            res = Facade.novoMaterial("9622","Esparadrapo","3");
-//            assertEquals("Material Cadastrado com sucesso", res);
-//
-//            res = Facade.novoMaterial("1881","Gesso","5");
-//            assertEquals("Material Cadastrado com sucesso", res);
-//
-//            res = Facade.novoMaterial("5796","Parafuso de Platina","150");
-//            assertEquals("Material Cadastrado com sucesso", res);
-//
-//            res = Facade.novoMaterial("4404","Placa de Platina","500");
-//            assertEquals("Material Cadastrado com sucesso", res);
-//
-//            res = Facade.novoMaterial("5927","Stinter card�aco","500");
-//            assertEquals("Material Cadastrado com sucesso", res);
-//
-//            res = Facade.novoMaterial("8996","Antisseptico","15");
-//            assertEquals("Material Cadastrado com sucesso", res);
-//
-//            res = Facade.novoMaterial("7278","Broncodilatador","20");
-//            assertEquals("Material Cadastrado com sucesso", res);
-//
-//            res = Facade.novoMaterial("1110","Anestesia Geral","800");
-//            assertEquals("Material Cadastrado com sucesso", res);
-//
-//            res = Facade.novoMaterial("1111","Anestesia Local","40");
-//            assertEquals("Material Cadastrado com sucesso", res);
-//
+
+            res = facade.novoMaterial("2415","Fio de Sutura","2");
+            assertEquals("Material Cadastrado com sucesso", res);
+
+            res = facade.novoMaterial("3314","Gaze","2");
+            assertEquals("Material Cadastrado com sucesso", res);
+
+            res = facade.novoMaterial("9622","Esparadrapo","3");
+            assertEquals("Material Cadastrado com sucesso", res);
+
+            res = facade.novoMaterial("1881","Gesso","5");
+            assertEquals("Material Cadastrado com sucesso", res);
+
+            res = facade.novoMaterial("5796","Parafuso de Platina","150");
+            assertEquals("Material Cadastrado com sucesso", res);
+
+            res = facade.novoMaterial("4404","Placa de Platina","500");
+            assertEquals("Material Cadastrado com sucesso", res);
+
+            res = facade.novoMaterial("5927","Stinter cardíaco","500");
+            assertEquals("Material Cadastrado com sucesso", res);
+
+            res = facade.novoMaterial("8996","Antisseptico","15");
+            assertEquals("Material Cadastrado com sucesso", res);
+
+            res = facade.novoMaterial("7278","Broncodilatador","20");
+            assertEquals("Material Cadastrado com sucesso", res);
+
+            res = facade.novoMaterial("1110","Anestesia Geral","800");
+            assertEquals("Material Cadastrado com sucesso", res);
+
+            res = facade.novoMaterial("1111","Anestesia Local","40");
+            assertEquals("Material Cadastrado com sucesso", res);
+
 ///*-------------------------------------agora fazendo associa��es: procedimentos soncomem materiais e usam equipamentos-----*/
-//
-//            facade = new Facade();
-//
-//            res = Facade.materialProcedimento("763236","2415"); // Ponte de Safena consome Fio de Sutura
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("763236","5927"); // Ponte de Safena consome Stinter card�aco
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("763236","8996"); // Ponte de Safena consome Antisseptico
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("763236","1110"); // Ponte de Safena consome Anestesia Geral
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//
-//            res = Facade.equipamentoProcedimento("763236","912"); // Ponte de Safena necessita do apoio de Mesa de Cirurgia
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("763236","685"); // Ponte de Safena necessita do apoio de Raio X
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("763236","206"); // Ponte de Safena necessita do apoio de Ultrassom
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//
-//            res = facade.listMateriaisProcedimento("763236");
-//            assertEquals("Fio de Sutura%Stinter card�aco%Antisseptico%Anestesia Geral", res);
-//
-//            res = facade.listEquipamentosProcedimento("763236");
-//            assertEquals("%Mesa de Cirurgia%Raio X%Ultrassom", res);
-//
-//
-//            res = Facade.materialProcedimento("377523","2415"); // Transplante Cora��o consome Fio de Sutura
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("377523","3314"); // Transplante Cora��o consome Gaze
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("377523","9622"); // Transplante Cora��o consome Esparadrapo
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("377523","5796"); // Transplante Cora��o consome Parafuso de Platina
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("377523","4404"); // Transplante Cora��o consome Placa de Platina
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("377523","8996"); // Transplante Cora��o consome Antisseptico
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("377523","1110"); // Transplante Cora��o consome Anestesia Geral
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//
-//            res = Facade.equipamentoProcedimento("377523","912"); // Transplante Cora��o necessita do apoio de Mesa de Cirurgia
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("377523","188"); // Transplante Cora��o necessita do apoio de Cadeira
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("377523","685"); // Transplante Cora��o necessita do apoio de Raio X
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("377523","206"); // Transplante Cora��o necessita do apoio de Ultrassom
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("377523","845"); // Transplante Cora��o necessita do apoio de Tom�grafo
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//
-//
-//            res = Facade.materialProcedimento("404482","1881"); // Redu��o de Fratura consome Gesso
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//
-//            res = Facade.equipamentoProcedimento("404482","885"); // Redu��o de Fratura necessita do apoio de Maca
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("404482","188"); // Redu��o de Fratura necessita do apoio de Cadeira
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("404482","358"); // Redu��o de Fratura necessita do apoio de Mesa de Trabalho
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//
-//
-//            res = Facade.equipamentoProcedimento("894275","912"); // Amputa��o de Membro necessita do apoio de Mesa de Cirurgia
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("894275","188"); // Amputa��o de Membro necessita do apoio de Cadeira
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("894275","358"); // Amputa��o de Membro necessita do apoio de Mesa de Trabalho
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("894275","685"); // Amputa��o de Membro necessita do apoio de Raio X
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//
-//            res = Facade.materialProcedimento("894275","2415"); // Amputa��o de Membro consome Fio de Sutura
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("894275","3314"); // Amputa��o de Membro consome Gaze
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("894275","9622"); // Amputa��o de Membro consome Esparadrapo
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("894275","8996"); // Amputa��o de Membro consome Antisseptico
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("894275","1110"); // Amputa��o de Membro consome Anestesia Geral
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
+
+            facade = new Facade();
+            res = facade.materialProcedimento("763236","2415"); // Ponte de Safena consome Fio de Sutura
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("763236","5927"); // Ponte de Safena consome Stinter card�aco
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("763236","8996"); // Ponte de Safena consome Antisseptico
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("763236","1110"); // Ponte de Safena consome Anestesia Geral
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+
+            res = facade.equipamentoProcedimento("763236","912"); // Ponte de Safena necessita do apoio de Mesa de Cirurgia
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("763236","685"); // Ponte de Safena necessita do apoio de Raio X
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("763236","206"); // Ponte de Safena necessita do apoio de Ultrassom
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+
+            res = facade.listMateriaisProcedimento("763236");
+            assertEquals("Fio de Sutura%Stinter cardíaco%Antisseptico%Anestesia Geral", res);
+
+            res = facade.listEquipamentosProcedimento("763236");
+            assertEquals("Mesa de Cirurgia%Raio X%Ultrassom", res);
+            // ERRO NO DE CIMA, % na frente
+
+
+            res = facade.materialProcedimento("377523","2415"); // Transplante Cora��o consome Fio de Sutura
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("377523","3314"); // Transplante Cora��o consome Gaze
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("377523","9622"); // Transplante Cora��o consome Esparadrapo
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("377523","5796"); // Transplante Cora��o consome Parafuso de Platina
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("377523","4404"); // Transplante Cora��o consome Placa de Platina
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("377523","8996"); // Transplante Cora��o consome Antisseptico
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("377523","1110"); // Transplante Cora��o consome Anestesia Geral
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+
+            res = facade.equipamentoProcedimento("377523","912"); // Transplante Cora��o necessita do apoio de Mesa de Cirurgia
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("377523","188"); // Transplante Cora��o necessita do apoio de Cadeira
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("377523","685"); // Transplante Cora��o necessita do apoio de Raio X
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("377523","206"); // Transplante Cora��o necessita do apoio de Ultrassom
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("377523","845"); // Transplante Cora��o necessita do apoio de Tom�grafo
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+
+
+            res = facade.materialProcedimento("404482","1881"); // Redu��o de Fratura consome Gesso
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+
+            res = facade.equipamentoProcedimento("404482","885"); // Redu��o de Fratura necessita do apoio de Maca
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("404482","188"); // Redu��o de Fratura necessita do apoio de Cadeira
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("404482","358"); // Redu��o de Fratura necessita do apoio de Mesa de Trabalho
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+
+
+            res = facade.equipamentoProcedimento("894275","912"); // Amputa��o de Membro necessita do apoio de Mesa de Cirurgia
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("894275","188"); // Amputa��o de Membro necessita do apoio de Cadeira
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("894275","358"); // Amputa��o de Membro necessita do apoio de Mesa de Trabalho
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("894275","685"); // Amputa��o de Membro necessita do apoio de Raio X
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+
+            res = facade.materialProcedimento("894275","2415"); // Amputa��o de Membro consome Fio de Sutura
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("894275","3314"); // Amputa��o de Membro consome Gaze
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("894275","9622"); // Amputa��o de Membro consome Esparadrapo
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("894275","8996"); // Amputa��o de Membro consome Antisseptico
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("894275","1110"); // Amputa��o de Membro consome Anestesia Geral
+            assertEquals("Material Incluido com sucesso no procedimento", res);
 ///*--------------------------Checando a persist�ncia ----------------------------------*/
-//
-//            facade = new Facade(); 
-//
-//            //transplante de cora��o
-//            res = facade.listMateriaisProcedimento("377523");
-//            assertEquals("Fio de Sutura%Gaze%Esparadrapo%Parafuso de Platina%Placa de Platina%Antisseptico%Anestesia Geral", res);
-//
-//            res = facade.listEquipamentosProcedimento("377523");
-//            assertEquals("Mesa de Cirurgia%Cadeira%Raio X%Ultrassom%Tom�grafo", res);
-//
-//            //redu��o de fratura
-//            res = facade.listMateriaisProcedimento("404482");
-//            assertEquals("Gesso", res);
-//            res = facade.listEquipamentosProcedimento("404482");
-//            assertEquals("Maca%Cadeira%Mesa de Trabalho", res);
-//
-//            //Amputa��o de Membro
-//            res = facade.listMateriaisProcedimento("894275");
-//            assertEquals("Fio de Sutura%Gaze%Esparadrapo%Antisseptico%Anestesia Geral", res);
-//            res = facade.listEquipamentosProcedimento("894275");
-//            assertEquals("Mesa de Cirurgia%Cadeira%Mesa de Trabalho%Raio X", res);
-//
-//
-///*-------------------------------------prosseguindo os testes---------------------------------------------------*/
-//
-//
-//            res = Facade.equipamentoProcedimento("839530","885"); // Curativo necessita do apoio de Maca
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("839530","188"); // Curativo necessita do apoio de Cadeira
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("839530","358"); // Curativo necessita do apoio de Mesa de Trabalho
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//
-//            res = Facade.materialProcedimento("839530","3314"); // Curativo consome Gaze
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("839530","9622"); // Curativo consome Esparadrapo
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("839530","8996"); // Curativo consome Antisseptico
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("839530","1111"); // Curativo consome Anestesia Local
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//
-//            //	Curativo
-//            res = facade.listMateriaisProcedimento("839530");
-//            assertEquals("Maca%Cadeira%Mesa de Trabalho", res);
-//            res = facade.listEquipamentosProcedimento("404482");
-//            assertEquals("%Gaze%Esparadrapo%Antisseptico%Anestesia Local", res);
-//
-//
-//            //Nebuliza��o
-//            res = Facade.materialProcedimento("200752","7278"); // Nebuliza��o consome Broncodilatador
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//
-//
-//            //	Nebuliza��o
-//            res = facade.listMateriaisProcedimento("200752");
-//            assertEquals("Broncodilatador", res);
-//
-//
-//            res = Facade.equipamentoProcedimento("886244","912"); // Cateterismo necessita do apoio de Mesa de Cirurgia
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("886244","188"); // Cateterismo necessita do apoio de Cadeira
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//            res = Facade.equipamentoProcedimento("886244","685"); // Cateterismo necessita do apoio de Raio X
-//            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
-//
-//
-//            res = Facade.materialProcedimento("886244","8996"); // Cateterismo consome Antisseptico
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("886244","1110"); // Cateterismo consome Anestesia Geral
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//            res = Facade.materialProcedimento("886244","5927"); // Cateterismo consome Stinter card�aco
-//            assertEquals("Material Incluido com sucesso no procedimento", res);
-//
-////---------------------------Mais testes de persist�ncia tamb�m
-//
-//            facade = new Facade();
-//
-//            //	Cateterismo
-//            res = facade.listEquipamentosProcedimento("886244");
-//            assertEquals("Mesa de Cirurgia%Cadeira%Raio X", res);
-//            res = facade.listMateriaisProcedimento("886244");
-//            assertEquals("Antisseptico%Anestesia Geral%Stinter card�aco", res);
+
+            facade = new Facade(); 
+
+            //transplante de cora��o
+            res = facade.listMateriaisProcedimento("377523");
+            assertEquals("Fio de Sutura%Gaze%Esparadrapo%Parafuso de Platina%Placa de Platina%Antisseptico%Anestesia Geral", res);
+
+            res = facade.listEquipamentosProcedimento("377523");
+            assertEquals("Mesa de Cirurgia%Cadeira%Raio X%Ultrassom%Tomógrafo", res);
+
+            //redu��o de fratura
+            res = facade.listMateriaisProcedimento("404482");
+            assertEquals("Gesso", res);
+            res = facade.listEquipamentosProcedimento("404482");
+            assertEquals("Maca%Cadeira%Mesa de Trabalho", res);
+
+            //Amputa��o de Membro
+            res = facade.listMateriaisProcedimento("894275");
+            assertEquals("Fio de Sutura%Gaze%Esparadrapo%Antisseptico%Anestesia Geral", res);
+            res = facade.listEquipamentosProcedimento("894275");
+            assertEquals("Mesa de Cirurgia%Cadeira%Mesa de Trabalho%Raio X", res);
+
+
+/*-------------------------------------prosseguindo os testes---------------------------------------------------*/
+
+
+            res = facade.equipamentoProcedimento("839530","885"); // Curativo necessita do apoio de Maca
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("839530","188"); // Curativo necessita do apoio de Cadeira
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("839530","358"); // Curativo necessita do apoio de Mesa de Trabalho
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+
+            res = facade.materialProcedimento("839530","3314"); // Curativo consome Gaze
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("839530","9622"); // Curativo consome Esparadrapo
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("839530","8996"); // Curativo consome Antisseptico
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("839530","1111"); // Curativo consome Anestesia Local
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+
+            //	Curativo
+            res = facade.listMateriaisProcedimento("839530");
+            assertEquals("Gaze%Esparadrapo%Antisseptico%Anestesia Local", res);
+            res = facade.listEquipamentosProcedimento("404482");
+            assertEquals("Maca%Cadeira%Mesa de Trabalho", res);
+            // Erro no de cima, % na frente
+            //Listas estão invertidas, materiais no lugar de equipamentos
+
+
+            //Nebuliza��o
+            res = facade.materialProcedimento("200752","7278"); // Nebuliza��o consome Broncodilatador
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+
+
+            //	Nebuliza��o
+            res = facade.listMateriaisProcedimento("200752");
+            assertEquals("Broncodilatador", res);
+
+
+            res = facade.equipamentoProcedimento("886244","912"); // Cateterismo necessita do apoio de Mesa de Cirurgia
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("886244","188"); // Cateterismo necessita do apoio de Cadeira
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+            res = facade.equipamentoProcedimento("886244","685"); // Cateterismo necessita do apoio de Raio X
+            assertEquals("Equipamento Incluido com sucesso no procedimento", res);
+
+
+            res = facade.materialProcedimento("886244","8996"); // Cateterismo consome Antisseptico
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("886244","1110"); // Cateterismo consome Anestesia Geral
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+            res = facade.materialProcedimento("886244","5927"); // Cateterismo consome Stinter card�aco
+            assertEquals("Material Incluido com sucesso no procedimento", res);
+
+//---------------------------Mais testes de persist�ncia tamb�m
+
+            facade = new Facade();
+
+            //	Cateterismo
+            res = facade.listEquipamentosProcedimento("886244");
+            assertEquals("Mesa de Cirurgia%Cadeira%Raio X", res);
+            res = facade.listMateriaisProcedimento("886244");
+            assertEquals("Antisseptico%Anestesia Geral%Stinter cardíaco", res);
 			
 	}
 

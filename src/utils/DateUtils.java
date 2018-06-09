@@ -14,23 +14,7 @@ import java.util.Date;
  *
  * @author eeeeeeeeeeeeeeeeeeee
  */
-public class Utils {
-    /***
-     * Search for special characters on string
-     * @param string
-     * @return -1 if doens't have any special char or position of special char
-     */
-    public static int findSpecialChar(String string) 
-    {
-        char[] chars = string.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            if(!Character.isLetter(chars[i]) && !Character.isWhitespace(chars[i])) {
-                return i;
-            }
-        }
-        return -1;
-    }
-    
+public class DateUtils {
     public static boolean validateDate(String dateToValidate) throws Exception
     {
         if(dateToValidate == null){
@@ -65,31 +49,4 @@ public class Utils {
         return df.format(date);
     }
     
-    public static boolean isStringInteger(String input)
-    {
-       try
-       {
-          Integer.parseInt( input );
-          return true;
-       }
-       catch(NumberFormatException ex)
-       {
-          return false;
-       }
-    }
-    
-    public static String formatDoubleToString(double number)
-    {
-        String num = String.valueOf(number);
-        num = num.replace(".", ",");
-        
-        
-        int decimal = (int) number;
-        double fractional = number - decimal;
-        
-        if(fractional == 0)
-            num = num.substring(0, num.indexOf(","));
-
-        return num;
-    }
 }
