@@ -130,7 +130,3 @@ CREATE TABLE EquipamentoProcedimento(
 
 SELECT * FROM EquipamentoProcedimento;
 
-# SELECT Material.descricao FROM Material INNER JOIN MaterialProcedimento Procedimento ON Material.id = Procedimento.id_material WHERE codigoProcedimento = "839530" ORDER BY Procedimento.id;
-# SELECT Equipamento.descricao FROM Equipamento INNER JOIN EquipamentoProcedimento E ON Equipamento.id = E.id_equipamento WHERE codigoProcedimento = "839530";
-# SELECT * FROM Equipamento WHERE codigo = "885";
-
