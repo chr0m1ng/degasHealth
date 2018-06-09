@@ -9,13 +9,12 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 /**
  *
  * @author eeeeeeeeeeeeeeeeeeee
  */
 public class DateUtils {
-    public static boolean validateDate(String dateToValidate) throws Exception
+    public static boolean validateDate(String dateToValidate)
     {
         if(dateToValidate == null){
             return false;
@@ -25,7 +24,6 @@ public class DateUtils {
         sdf.setLenient(false);
 
         try {
-
             //if not valid, it will throw ParseException
             Date date = sdf.parse(dateToValidate);
 
@@ -37,10 +35,20 @@ public class DateUtils {
         return true;
     }
     
-    public static Date createDateFromString(String date) throws ParseException
+    public static Date createDateFromString(String date)
     {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        return sdf.parse(date);
+        if(validateDate(date))
+        {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                Date dateFim = sdf.parse(date);
+                return dateFim;
+            } catch (ParseException ex) {
+                return null;
+            }
+        }
+        else
+            return null;
     }
     
     public static String formatDateBR(Date date)

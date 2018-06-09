@@ -5,7 +5,6 @@
  */
 package database;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

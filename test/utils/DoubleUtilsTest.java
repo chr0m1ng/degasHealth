@@ -1,23 +1,24 @@
-package utils;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package utils;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author eeeeeeeeeeeeeeeeeeee
  */
-public class UtilsTest {
+public class DoubleUtilsTest {
     
-    public UtilsTest() {
+    public DoubleUtilsTest() {
     }
     
     @BeforeClass
@@ -35,4 +36,13 @@ public class UtilsTest {
     @After
     public void tearDown() {
     }
+
+     @Test
+     public void testDoubleUtils() {
+         //Test Format
+         Double db = 123.34;
+         assertEquals("123,34", DoubleUtils.formatDoubleToString(db));
+         db = 123.00;
+         assertEquals("123", DoubleUtils.formatDoubleToString(db));
+     }
 }
