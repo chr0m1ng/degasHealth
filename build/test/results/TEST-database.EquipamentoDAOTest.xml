@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Apollo11" name="database.EquipamentoDAOTest" skipped="0" tests="1" time="0.491" timestamp="2018-06-09T04:53:49">
+<testsuite errors="0" failures="0" hostname="Apollo11" name="database.EquipamentoDAOTest" skipped="0" tests="1" time="0.809" timestamp="2018-06-15T03:10:46">
   <properties>
     <property name="netbeans.autoupdate.country" value="BR" />
     <property name="nb.wait.for.caches" value="true" />
@@ -42,7 +42,7 @@
     <property name="user.name" value="eeeeeeeeeeeeeeeeeeee" />
     <property name="copylibs.rebase" value="true" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner database.EquipamentoDAOTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\eeeeeeeeeeeeeeeeeeee\Documents\NetBeansProjects\Hospital\build\test\results\TEST-database.EquipamentoDAOTest.xml crashfile=C:\Users\eeeeeeeeeeeeeeeeeeee\Documents\NetBeansProjects\Hospital\build\junitvmwatcher8834788999627998319.properties propsfile=C:\Users\eeeeeeeeeeeeeeeeeeee\Documents\NetBeansProjects\Hospital\build\junit8533728881579643564.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner database.EquipamentoDAOTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\eeeeeeeeeeeeeeeeeeee\Documents\NetBeansProjects\Hospital\build\test\results\TEST-database.EquipamentoDAOTest.xml crashfile=C:\Users\eeeeeeeeeeeeeeeeeeee\Documents\NetBeansProjects\Hospital\build\junitvmwatcher6888150527721561766.properties propsfile=C:\Users\eeeeeeeeeeeeeeeeeeee\Documents\NetBeansProjects\Hospital\build\junit810379332822854843.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="jnlp.descriptor" value="application" />
@@ -330,7 +330,7 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="database.EquipamentoDAOTest" name="testEquipamentoDAO" time="0.426" />
+  <testcase classname="database.EquipamentoDAOTest" name="testEquipamentoDAO" time="0.718" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

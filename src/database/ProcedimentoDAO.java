@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package database;
+import java.sql.CallableStatement;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,23 +26,27 @@ public class ProcedimentoDAO {
             throw new Exception("Descrição de Procedimento Ja Cadastrado");
         else
         {
-            String query = "INSERT INTO Procedimento (codigo, descricao, valor) VALUES (?, ?, ?)";
-            PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setInt (1, p.getCodigo());
-            preparedStmt.setString (2, p.getDescricao());
-            preparedStmt.setDouble(3, p.getValor());
+            String query = "{CALL insert_procedimento(?, ?, ?)}";
+            CallableStatement stmt = conn.prepareCall(query);
+            stmt.setInt (1, p.getCodigo());
+            stmt.setString (2, p.getDescricao());
+            stmt.setDouble(3, p.getValor());
 
-            preparedStmt.execute();
+            stmt.execute();
         }
     }
     
     public static Procedimento consultarProcedimento(String campo, String valor, Connection conn) throws Exception
     {
-        String query = "SELECT * FROM Procedimento WHERE " + campo + " = ?";
-        PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setString(1, valor);
+        String query;
+        if(campo.equals("codigo"))
+            query = "{CALL get_procedimento_by_code(?)}";
+        else
+            query = "{CALL get_procedimento_by_description(?)}";
+        CallableStatement stmt = conn.prepareCall(query);
+        stmt.setString(1, valor);
         
-        ResultSet rs = preparedStmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
         
         if(rs.next())
             return new Procedimento(rs.getString("codigo"), rs.getString("descricao"), rs.getString("valor").replace(".", ","));
@@ -64,11 +69,11 @@ public class ProcedimentoDAO {
     
     public static int obterIdDBProcedimentoPorCodigo(int codigo, Connection conn) throws Exception
     {
-        String query = "SELECT id FROM Procedimento WHERE codigo = ?";
-        PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setInt(1, codigo);
+        String query = "{CALL get_procedimento_by_code(?)}";
+        CallableStatement stmt = conn.prepareCall(query);
+        stmt.setInt(1, codigo);
         
-        ResultSet rs = preparedStmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
         
         if(rs.next())
             return rs.getInt("id");
@@ -92,14 +97,12 @@ public class ProcedimentoDAO {
             if(mat.getCodigo() == Integer.valueOf(codigoMaterial))
                 throw new Exception("Erro: Material já foi adicionado");
         
-        query = "INSERT INTO MaterialProcedimento (id_material, id_procedimento, codigoProcedimento, codigoMaterial) VALUES (?, ?, ?, ?)";
-        PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setInt(1, MaterialDAO.obterIdDBMaterialPorCodigo(matExistente.getCodigo(), conn));
-        preparedStmt.setInt(2, obterIdDBProcedimentoPorCodigo(pExistente.getCodigo(), conn));
-        preparedStmt.setInt(3, pExistente.getCodigo());
-        preparedStmt.setInt(4, matExistente.getCodigo());
+        query = "{CALL insert_materialProcedimento(?, ?)}";
+        CallableStatement stmt = conn.prepareCall(query);
+        stmt.setInt(1, MaterialDAO.obterIdDBMaterialPorCodigo(matExistente.getCodigo(), conn));
+        stmt.setInt(2, obterIdDBProcedimentoPorCodigo(pExistente.getCodigo(), conn));
 
-        preparedStmt.execute();
+        stmt.execute();
             
     }
     
@@ -107,11 +110,11 @@ public class ProcedimentoDAO {
     {
         ArrayList<Material> materiais = new ArrayList();
         
-        String query = "SELECT Material.* FROM Material INNER JOIN MaterialProcedimento MP ON Material.id = MP.id_material WHERE codigoProcedimento = ? ORDER BY MP.id";
-        PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setInt(1, codigo);
+        String query = "{CALL get_materialProcedimento_by_codigoProcedimento(?)}";
+        CallableStatement stmt = conn.prepareCall(query);
+        stmt.setInt(1, codigo);
         
-        ResultSet rs = preparedStmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
         
         while(rs.next())
             materiais.add(new Material(rs.getString("codigo"), rs.getString("descricao"), rs.getString("valor")));
@@ -135,14 +138,12 @@ public class ProcedimentoDAO {
             if(eq.getCodigo() == Integer.valueOf(codigoEquipamento))
                 throw new Exception("Erro: Material já foi adicionado");
         
-        query = "INSERT INTO EquipamentoProcedimento (id_equipamento, id_procedimento, codigoProcedimento, codigoEquipamento) VALUES (?, ?, ?, ?)";
-        PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setInt(1, EquipamentoDAO.obterIdDBEquipamentoPorCodigo(eqExistente.getCodigo(), conn));
-        preparedStmt.setInt(2, obterIdDBProcedimentoPorCodigo(pExistente.getCodigo(), conn));
-        preparedStmt.setInt(3, pExistente.getCodigo());
-        preparedStmt.setInt(4, eqExistente.getCodigo());
+        query = "{CALL insert_equipamentoProcedimento(?, ?)}";
+        CallableStatement stmt = conn.prepareCall(query);
+        stmt.setInt(1, EquipamentoDAO.obterIdDBEquipamentoPorCodigo(eqExistente.getCodigo(), conn));
+        stmt.setInt(2, obterIdDBProcedimentoPorCodigo(pExistente.getCodigo(), conn));
 
-        preparedStmt.execute();
+        stmt.execute();
             
     }
     
@@ -150,11 +151,11 @@ public class ProcedimentoDAO {
     {
         ArrayList<Equipamento> equipamentos = new ArrayList();
         
-        String query = "SELECT Equipamento.* FROM Equipamento INNER JOIN EquipamentoProcedimento E ON Equipamento.id = E.id_equipamento WHERE codigoProcedimento = ? ORDER BY E.id";
-        PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setInt(1, codigo);
+        String query = "{CALL get_equipamentoProcedimento_by_codigoProcedimento(?)}";
+        CallableStatement stmt = conn.prepareCall(query);
+        stmt.setInt(1, codigo);
         
-        ResultSet rs = preparedStmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
         
         while(rs.next())
             equipamentos.add(new Equipamento(rs.getString("codigo"), rs.getString("descricao"), rs.getString("valor")));

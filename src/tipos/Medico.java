@@ -23,7 +23,7 @@ public class Medico extends Funcionario{
     
     public Medico(String nome, String sexo, String crm, String nacionalidade, String dataNasc, String dataAdmissao, String dataFormatura) throws Exception
     {
-        super(nome, sexo, nacionalidade, dataNasc, dataAdmissao, dataFormatura, "CRM", Integer.parseInt(crm), "Medico");
+        super(nome, sexo, nacionalidade, dataNasc, dataAdmissao, dataFormatura, Integer.parseInt(crm));
     }
     
 }

@@ -19,6 +19,6 @@ public class Enfermeiro extends Funcionario {
     
     public Enfermeiro(String nome, String sexo, String coren, String nacionalidade, String dataNasc, String dataAdmissao, String dataFormatura) throws Exception
     {
-        super(nome, sexo, nacionalidade, dataNasc, dataAdmissao, dataFormatura, "COREN", Integer.parseInt(coren), "Enfermeiro");
+        super(nome, sexo, nacionalidade, dataNasc, dataAdmissao, dataFormatura, Integer.parseInt(coren));
     }
 }

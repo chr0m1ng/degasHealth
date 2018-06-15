@@ -19,6 +19,6 @@ public class Auxiliar extends Funcionario{
     
     public Auxiliar(String nome, String sexo, String coren, String nacionalidade, String dataNasc, String dataAdmissao, String dataFormatura) throws Exception
     {
-        super(nome, sexo, nacionalidade, dataNasc, dataAdmissao, dataFormatura, "COREN", Integer.parseInt(coren), "Auxiliar");
+        super(nome, sexo, nacionalidade, dataNasc, dataAdmissao, dataFormatura, Integer.parseInt(coren));
     }
 }

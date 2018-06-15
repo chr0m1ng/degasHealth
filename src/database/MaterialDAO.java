@@ -5,8 +5,8 @@
  */
 package database;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import tipos.Material;
 
@@ -22,13 +22,13 @@ public class MaterialDAO {
         
         if(matExistente == null)
         {
-            query = "INSERT INTO Material (codigo, descricao, valor) VALUES (?, ?, ?)";
-            PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setInt(1, mat.getCodigo());
-            preparedStmt.setString(2, mat.getDescricao());
-            preparedStmt.setDouble(3, mat.getValor());
+            query = "{CALL insert_material(?, ?, ?)}";
+            CallableStatement stmt = conn.prepareCall(query);
+            stmt.setInt(1, mat.getCodigo());
+            stmt.setString(2, mat.getDescricao());
+            stmt.setDouble(3, mat.getValor());
             
-            preparedStmt.execute();
+            stmt.execute();
         }
         else
             throw new Exception("Material já cadastrado");
@@ -36,11 +36,11 @@ public class MaterialDAO {
 
     public static Material consultarMaterialPorCodigo(int codigo, Connection conn) throws Exception
     {
-        String query = "SELECT * FROM Material WHERE codigo = ?";
-        PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setInt(1, codigo);
+        String query = "{CALL get_material_by_code(?)}";
+        CallableStatement stmt = conn.prepareCall(query);
+        stmt.setInt(1, codigo);
         
-        ResultSet rs = preparedStmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
         
         if(rs.next())
         {
@@ -53,11 +53,11 @@ public class MaterialDAO {
     
     public static int obterIdDBMaterialPorCodigo(int codigo, Connection conn) throws Exception
     {
-        String query = "SELECT id FROM Material WHERE codigo = ?";
-        PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setInt(1, codigo);
+        String query = "{CALL get_material_by_code(?)}";
+        CallableStatement stmt = conn.prepareCall(query);
+        stmt.setInt(1, codigo);
         
-        ResultSet rs = preparedStmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
         
         if(rs.next())
             return rs.getInt("id");

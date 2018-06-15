@@ -85,17 +85,17 @@ public class FuncionarioDAOTest {
         Auxiliar axExistente;
         
         try {
-            mExistente = (Medico) FuncionarioDAO.consultarFuncionarioPorCodigo(m.getCodigo(), conn, "Medico", "crm");
+            mExistente = (Medico) FuncionarioDAO.consultarFuncionarioPorCodigo(m.getCodigo(), conn, "Medico");
             assertEquals(m.toString(), mExistente.toString());
-            mExistente = (Medico) FuncionarioDAO.consultarFuncionarioPorNome(m.getNome(), conn, "Medico", "crm");
+            mExistente = (Medico) FuncionarioDAO.consultarFuncionarioPorNome(m.getNome(), conn, "Medico");
             assertEquals(m.toString(), mExistente.toString());
-            eExistente = (Enfermeiro) FuncionarioDAO.consultarFuncionarioPorCodigo(e.getCodigo(), conn, "Enfermeiro", "coren");
+            eExistente = (Enfermeiro) FuncionarioDAO.consultarFuncionarioPorCodigo(e.getCodigo(), conn, "Enfermeiro");
             assertEquals(e.toString(), eExistente.toString());
-            eExistente = (Enfermeiro) FuncionarioDAO.consultarFuncionarioPorNome(e.getNome(), conn, "Enfermeiro", "coren");
+            eExistente = (Enfermeiro) FuncionarioDAO.consultarFuncionarioPorNome(e.getNome(), conn, "Enfermeiro");
             assertEquals(e.toString(), eExistente.toString());
-            axExistente = (Auxiliar) FuncionarioDAO.consultarFuncionarioPorCodigo(ax.getCodigo(), conn, "Auxiliar", "coren");
+            axExistente = (Auxiliar) FuncionarioDAO.consultarFuncionarioPorCodigo(ax.getCodigo(), conn, "Auxiliar");
             assertEquals(ax.toString(), axExistente.toString());
-            axExistente = (Auxiliar) FuncionarioDAO.consultarFuncionarioPorNome(ax.getNome(), conn, "Auxiliar", "coren");
+            axExistente = (Auxiliar) FuncionarioDAO.consultarFuncionarioPorNome(ax.getNome(), conn, "Auxiliar");
             assertEquals(ax.toString(), axExistente.toString());
         } catch (Exception ex) {
             //NÂO DEVE TER EXCEPTION
@@ -103,17 +103,17 @@ public class FuncionarioDAOTest {
         
         //Recuperando Funcionario Inexistente
         try {
-            mExistente = (Medico) FuncionarioDAO.consultarFuncionarioPorCodigo(123, conn, "Medico", "crm");
+            mExistente = (Medico) FuncionarioDAO.consultarFuncionarioPorCodigo(123, conn, "Medico");
             assertEquals(mExistente, null);
-            mExistente = (Medico) FuncionarioDAO.consultarFuncionarioPorNome(m.getNacionalidade(), conn, "Medico", "crm");
+            mExistente = (Medico) FuncionarioDAO.consultarFuncionarioPorNome(m.getNacionalidade(), conn, "Medico");
             assertEquals(mExistente, null);
-            eExistente = (Enfermeiro) FuncionarioDAO.consultarFuncionarioPorCodigo(123, conn, "Enfermeiro", "coren");
+            eExistente = (Enfermeiro) FuncionarioDAO.consultarFuncionarioPorCodigo(123, conn, "Enfermeiro");
             assertEquals(eExistente, null);
-            eExistente = (Enfermeiro) FuncionarioDAO.consultarFuncionarioPorNome(e.getNacionalidade(), conn, "Enfermeiro", "coren");
+            eExistente = (Enfermeiro) FuncionarioDAO.consultarFuncionarioPorNome(e.getNacionalidade(), conn, "Enfermeiro");
             assertEquals(eExistente, null);
-            axExistente = (Auxiliar) FuncionarioDAO.consultarFuncionarioPorCodigo(123, conn, "Auxiliar", "coren");
+            axExistente = (Auxiliar) FuncionarioDAO.consultarFuncionarioPorCodigo(123, conn, "Auxiliar");
             assertEquals(axExistente, null);
-            axExistente = (Auxiliar) FuncionarioDAO.consultarFuncionarioPorNome(ax.getNacionalidade(), conn, "Auxiliar", "coren");
+            axExistente = (Auxiliar) FuncionarioDAO.consultarFuncionarioPorNome(ax.getNacionalidade(), conn, "Auxiliar");
             assertEquals(axExistente, null);
         } catch (Exception ex) {
             //NÂO DEVE TER EXCEPTION

@@ -5,6 +5,7 @@
  */
 package database;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,12 +30,12 @@ public class EspecialidadeDAO {
         
         if(!flag)
         {
-            query = "INSERT INTO Especialidade (codigo, descricao) VALUES (?, ?)";
-            PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setInt (1, esp.getCodigo());
-            preparedStmt.setString (2, esp.getDescricao());
+            query = "{CALL insert_especialidade(?, ?)}";
+            CallableStatement stmt = conn.prepareCall(query);
+            stmt.setInt (1, esp.getCodigo());
+            stmt.setString (2, esp.getDescricao());
  
-            preparedStmt.execute();
+            stmt.execute();
         }
         else
             throw new Exception("Especialidade já cadastrada");
@@ -44,11 +45,11 @@ public class EspecialidadeDAO {
 
     public static Especialidade consultarEspecialidadePorCodigo(int codigo, Connection conn) throws Exception
     {
-        String query = "SELECT * FROM Especialidade WHERE codigo = ?";
-        PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setInt(1, codigo);
+        String query = "{CALL get_especialidade_by_code(?)}";
+        CallableStatement stmt = conn.prepareCall(query);
+        stmt.setInt(1, codigo);
         
-        ResultSet rs = preparedStmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
         
         if(rs.next())
         {
@@ -61,11 +62,11 @@ public class EspecialidadeDAO {
     
     public static Especialidade consultarEspecialidadePorDescricao(String descricao, Connection conn) throws Exception
     {
-        String query = "SELECT * FROM Especialidade WHERE descricao = ?";
-        PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setString(1, descricao);
+        String query = "{CALL get_especialidade_by_description(?)}";
+        CallableStatement stmt = conn.prepareCall(query);
+        stmt.setString(1, descricao);
         
-        ResultSet rs = preparedStmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
         
         if(rs.next())
         {

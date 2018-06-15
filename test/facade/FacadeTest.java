@@ -294,13 +294,9 @@ public class FacadeTest {
             res = facade.novoAuxiliar("Olimpo Luz do Panteão Divino ","M","21566","Brasil","05/12/1989","28/03/2017","22/06/2012");
             assertEquals("ERRO! COREN Já existente!", res);
 
-//            res = facade.novoAuxiliar("Pablo Bardo da Sofrência Boêmio","M","289673","Brasil","12/10/1984","31/10/2013","05/01/2011"); ----- ORIGINAL
-            //??? qual data é invalida? todas as 3 estão corretas no teste original /\...
             res = facade.novoAuxiliar("Pablo Bardo da Sofrência Boêmio","M","289673","Brasil","12/10/1984","32/10/2013","05/01/2011"); 
             assertEquals("ERRO! Data Inválida!", res); 
 
-//            res = facade.novoAuxiliar("Quincas Borba","M","289673","Brasil","12/10/1983","30/10/2012","05/01/2011"); ----- ORIGINAL
-            //??? qual data é invalida? todas as 3 estão corretas no teste original /\...
             res = facade.novoAuxiliar("Quincas Borba","M","289673","Brasil","12/10/1983","32/10/2012","05/01/2011");
             assertEquals("ERRO! Data Inválida!", res);
 
@@ -338,8 +334,6 @@ public class FacadeTest {
             res = facade.alteraAuxiliar("236311","DtNasc", "31/01/1971");
             assertEquals("Alteracao executada com sucesso!", res);
             res = facade.encontraAuxiliar("236311");
-//            assertEquals("Maria do Bairro%F%236311%Brasil%31/01/1971%13/08/2005%07/11/1999", res); ----- ORIGINAL
-            //Data de formatura estava diferente da inserida inicialmente e nunca foi alterada mas esta com outro valor aqui ??? /\
             assertEquals("Maria do Bairro%F%236311%Brasil%31/01/1971%13/08/2005%07/05/1999", res);
 
             res = facade.alteraAuxiliar("21566","DtAdmiss", "19/02/2002");
@@ -356,8 +350,6 @@ public class FacadeTest {
             res = facade.alteraAuxiliar("289673","DtFormatura", "30/03/2010");
             assertEquals("Alteracao executada com sucesso!", res);
             res = facade.encontraAuxiliar("289673");
-//            assertEquals("Sábado de Sol Silva%M%289673%Brasil%12/08/1984%30/11/2013%05/01/2011", res); ----- ORIGINAL
-            //Acabou de alterar o valor aqui em cima /\ da data de formatura e ta comparando com a data antiga... não faz sentido ???
             assertEquals("Sábado de Sol Silva%M%289673%Brasil%12/08/1984%30/11/2013%30/03/2010", res);
 //
 ///*-------------------------Procedimentos --------------------------------------------*/
@@ -615,7 +607,6 @@ public class FacadeTest {
 
             res = facade.listEquipamentosProcedimento("763236");
             assertEquals("Mesa de Cirurgia%Raio X%Ultrassom", res);
-            // ERRO NO DE CIMA, % na frente
 
 
             res = facade.materialProcedimento("377523","2415"); // Transplante Cora��o consome Fio de Sutura
@@ -723,8 +714,6 @@ public class FacadeTest {
             assertEquals("Gaze%Esparadrapo%Antisseptico%Anestesia Local", res);
             res = facade.listEquipamentosProcedimento("404482");
             assertEquals("Maca%Cadeira%Mesa de Trabalho", res);
-            // Erro no de cima, % na frente
-            //Listas estão invertidas, materiais no lugar de equipamentos
 
 
             //Nebuliza��o

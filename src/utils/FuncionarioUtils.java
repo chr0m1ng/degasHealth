@@ -54,9 +54,9 @@ public class FuncionarioUtils {
             Funcionario f;
             Connection conn = ConexaoDB.getConexaoMySQL();
             if(isStringInteger(pesquisa))
-                f = FuncionarioDAO.consultarFuncionarioPorCodigo(Integer.parseInt(pesquisa), conn, tipoFuncionario, tipoCodigo);
+                f = FuncionarioDAO.consultarFuncionarioPorCodigo(Integer.parseInt(pesquisa), conn, tipoFuncionario);
             else
-                f = FuncionarioDAO.consultarFuncionarioPorNome(pesquisa, conn, tipoFuncionario, tipoCodigo);
+                f = FuncionarioDAO.consultarFuncionarioPorNome(pesquisa, conn, tipoFuncionario);
             conn.close();
             return f.toString();
         } 
@@ -122,7 +122,7 @@ public class FuncionarioUtils {
             if(campo.equals("DtNasc") || campo.equals("DtAdmiss") || campo.equals("DtFormatura"))
             {                                
                 Connection conn = ConexaoDB.getConexaoMySQL();
-                Funcionario fTest = FuncionarioDAO.consultarFuncionarioPorCodigo(codigo, conn, tipoFuncionario, tipoCodigo);
+                Funcionario fTest = FuncionarioDAO.consultarFuncionarioPorCodigo(codigo, conn, tipoFuncionario);
 
                 switch (campo) 
                 {

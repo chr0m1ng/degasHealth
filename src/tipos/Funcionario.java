@@ -20,15 +20,13 @@ public class Funcionario {
     private Date DataNascimento;
     private Date DataAdmissao;
     private Date DataFormatura;
-    private String tipoCodigo;
     private int codigo;
-    private String tipoFuncionario;
     
     public Funcionario()
     {
     }
     
-    public Funcionario(String nome, String sexo, String nacionalidade, String dataNasc, String dataAdmissao, String dataFormatura, String tipoCodigo, int codigo, String tipoFuncionario) throws Exception
+    public Funcionario(String nome, String sexo, String nacionalidade, String dataNasc, String dataAdmissao, String dataFormatura, int codigo) throws Exception
     {
         this.setNome(nome);
         this.setSexo(sexo);
@@ -36,9 +34,7 @@ public class Funcionario {
         this.setDataNascimento(dataNasc);
         this.setDataAdmissao(dataAdmissao);
         this.setDataFormatura(dataFormatura);
-        this.setTipoCodigo(tipoCodigo);
         this.setCodigo(codigo);
-        this.setTipoFuncionario(tipoFuncionario);
     }
     
     public String getNome() {
@@ -113,13 +109,6 @@ public class Funcionario {
             throw new Exception("ERRO! Inconsistencia de datas: Formatura posterior a admissão!");
     }
 
-    public String getTipoCodigo() {
-        return tipoCodigo;
-    }
-
-    public final void setTipoCodigo(String tipoCodigo) {
-        this.tipoCodigo = tipoCodigo;
-    }
 
     public int getCodigo() {
         return codigo;
@@ -127,14 +116,6 @@ public class Funcionario {
 
     public final void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public String getTipoFuncionario() {
-        return tipoFuncionario;
-    }
-
-    public final void setTipoFuncionario(String tipoFuncionario) {
-        this.tipoFuncionario = tipoFuncionario;
     }
     
     @Override

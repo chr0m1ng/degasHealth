@@ -5,8 +5,8 @@
  */
 package database;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import tipos.Equipamento;
 import tipos.Tombo;
@@ -24,13 +24,13 @@ public class EquipamentoDAO {
         
         if(eqpExistente == null)
         {
-            query = "INSERT INTO Equipamento (codigo, descricao, valor) VALUES (?, ?, ?)";
-            PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setInt(1, eqp.getCodigo());
-            preparedStmt.setString(2, eqp.getDescricao());
-            preparedStmt.setDouble(3, eqp.getValor());
+            query = "{CALL insert_equipamento(?, ?, ?)}";
+            CallableStatement stmt = conn.prepareCall(query);
+            stmt.setInt(1, eqp.getCodigo());
+            stmt.setString(2, eqp.getDescricao());
+            stmt.setDouble(3, eqp.getValor());
             
-            preparedStmt.execute();
+            stmt.execute();
         }
         else
             throw new Exception("Equipamento já cadastrado");
@@ -38,11 +38,11 @@ public class EquipamentoDAO {
 
     public static Equipamento consultarEquipamentoPorCodigo(int codigo, Connection conn) throws Exception
     {
-        String query = "SELECT * FROM Equipamento WHERE codigo = ?";
-        PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setInt(1, codigo);
+        String query = "{CALL get_equipamento_by_code(?)}";
+        CallableStatement stmt = conn.prepareCall(query);
+        stmt.setInt(1, codigo);
         
-        ResultSet rs = preparedStmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
         
         if(rs.next())
         {
@@ -64,22 +64,22 @@ public class EquipamentoDAO {
             throw new Exception("Erro: Tombo já existente");
         else
         {
-            query = "INSERT INTO Tombo (codigoEquipamento, codigoTombo) VALUES (?, ?)";
-            PreparedStatement preparedStmt = conn.prepareStatement(query);
-            preparedStmt.setInt (1, t.getCodigoEquipamento());
-            preparedStmt.setString(2, t.getCodigoTombo());
+            query = "{CALL insert_tombo(?, ?)}";
+            CallableStatement stmt = conn.prepareCall(query);
+            stmt.setInt(1, obterIdDBEquipamentoPorCodigo(eqpExistente.getCodigo(), conn));
+            stmt.setString(2, t.getCodigoTombo());
             
-            preparedStmt.execute();
+            stmt.execute();
         }
             
     }
 
     public static Tombo consultarTomboPorCodigoTombo(String codigoTombo, Connection conn) throws Exception {
-        String query = "SELECT * FROM Tombo WHERE codigoTombo = ?";
-        PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setString(1, codigoTombo);
+        String query = "{CALL get_tombo_by_code(?)}";
+        CallableStatement stmt = conn.prepareCall(query);
+        stmt.setString(1, codigoTombo);
         
-        ResultSet rs = preparedStmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
         
         if(rs.next())
         {
@@ -92,11 +92,12 @@ public class EquipamentoDAO {
     
     public static int obterIdDBEquipamentoPorCodigo(int codigo, Connection conn) throws Exception
     {
-        String query = "SELECT id FROM Equipamento WHERE codigo = ?";
-        PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setInt(1, codigo);
+        String query = "{CALL get_equipamento_by_code(?)}";
+        CallableStatement stmt = conn.prepareCall(query);
+        stmt.setInt(1, codigo);
         
-        ResultSet rs = preparedStmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
+        
         
         if(rs.next())
             return rs.getInt("id");
